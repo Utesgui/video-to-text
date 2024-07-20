@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Package Application
-      run: pyinstaller --onefile --windowed video-to-text.py
+      run: pyinstaller --onefile --windowed video-to-text.py --add-binary='C:\\hostedtoolcache\\windows\\Python\\3.12.4\\x64\\Lib\\site-packages\\azure\\cognitiveservices\\speech\\Microsoft.CognitiveServices.Speech.core.dll':'.'
 
     # - name: Package Application
     #   uses: JackMcKew/pyinstaller-action-windows@main
@@ -36,5 +36,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: video-to-text.exe
+        name: windows-executable
         path: ./dist/video-to-text.exe
