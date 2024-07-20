@@ -37,7 +37,7 @@ The Video Transcription Tool is a Python-based GUI application that allows users
 
 1. Run the ```gui.py``` script to start the application:
     ```sh
-    python gui.py
+    python video-to-text.py
     ```
 2. Use the "Select Video File" button to choose the video file you want to transcribe.
 
