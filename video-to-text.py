@@ -9,7 +9,7 @@ import threading
 from datetime import timedelta, datetime
 
 
-config_file = "settings.ini"
+config_file = "video-to-text.ini"
 config = ConfigParser()
 
 def save_settings():
