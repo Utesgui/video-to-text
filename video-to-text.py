@@ -168,7 +168,7 @@ def transcribe_audio(audio_file, subscription_key, service_region):
 
 # Create the main window
 root = tk.Tk()
-root.title("Video Transcription Tool")
+root.title("video-to-text Tool")
 
 video_file_var = tk.StringVar()
 speech_key_var = tk.StringVar()

@@ -1,8 +1,8 @@
 # video-to-text Tool
 
-The Vvideo-to-text Tool is a Python-based GUI application that allows users to transcribe audio from video files.  
+The video-to-text Tool is a Python-based GUI application that allows users to transcribe audio from video files.  
 It utilizes Azure's Cognitive Services Speech SDK for transcription and provides a simple interface for selecting video files, entering Azure Speech Service credentials, and viewing the transcription results.
-
+![screenshot of GUI](screenshot.png)
 ## Features
 
 - **Video File Selection**: Easily select the video file you want to transcribe.
