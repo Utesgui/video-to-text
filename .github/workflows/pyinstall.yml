@@ -4,8 +4,15 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'screenshot.png'
+      - '.github/**'
+      - 'README.md'
+      - 'LICENSE'
+      - 'gitignore'
   pull_request:
     branches: [ main ]
+
 
 jobs:
   build:
