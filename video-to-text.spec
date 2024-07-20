@@ -4,7 +4,6 @@
 a = Analysis(
     ['video-to-text.py'],
     pathex=[],
-    binaries=[('C:\\\\Users\\\\klaus\\\\AppData\\\\Local\\\\Programs\\\\Python\\\\Python311\\\\Lib\\\\site-packages\\\\azure\\\\cognitiveservices\\\\speech\\\\Microsoft.CognitiveServices.Speech.core.dll', '.')],
     datas=[],
     hiddenimports=[],
     hookspath=[],
