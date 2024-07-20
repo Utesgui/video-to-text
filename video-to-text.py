@@ -58,13 +58,11 @@ def start_process():
     
     def process():
         try:
+            log_message("Extracting audio from video...")
+            log_message(f"Video file: {video_file}")
             audio_file = extract_audio(video_file)
             log_message(f"Extracted audio to: {audio_file}")
-            if stop_requested:
-                return  # Exit the process if stop is requested
             transcribe_audio(audio_file, speech_key, region)
-            if stop_requested:
-                return  # Check again after long-running operations
             log_message("Transcription completed.")
         except Exception as e:
             log_message(f"Error during processing: {e}")
@@ -79,25 +77,33 @@ def stop_process():
 
 
 def extract_audio(video_file):
-    output_file = video_file.rsplit('.', 1)[0] + ".wav"
-    video = VideoFileClip(video_file)
-    audio = video.audio
-    audio.write_audiofile(output_file, codec="pcm_s16le", fps=16000, bitrate="16k", ffmpeg_params=["-ac", "1"])
-    return output_file
+    try:
+        log_message(f"extracting audio from file: {video_file}")
+        output_file = video_file.rsplit('.', 1)[0] + ".wav"
+        log_message(f"extracting audio to file: {output_file}")
+        video = VideoFileClip(video_file)
+        audio = video.audio
+        audio.write_audiofile(output_file, codec="pcm_s16le", fps=16000, bitrate="16k", ffmpeg_params=["-ac", "1"])
+        return "G:/virtual pc/hdd/_d/working/DON'T use advanced English! (C1-C2).wav"
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 def transcribe_audio(audio_file, subscription_key, service_region):
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    # Authenticate
-    speech_config = speechsdk.SpeechConfig(subscription_key, service_region)
-    # Set up the file as the audio source
-    audio_config = speechsdk.AudioConfig(filename=audio_file)
-    speech_recognizer = speechsdk.SpeechRecognizer(speech_config, audio_config)
-    audio_file_name_without_extension = audio_file.rsplit('.', 1)[0]
-    transcript_file_name = audio_file_name_without_extension + ".txt"
-    with open(transcript_file_name, 'a') as file:
-                file.write('\n'+'\n'+'\n')
-                file.write("Transcription started at " + timestamp + '\n')
-                file.write('\n'+'\n')
+    try:
+        # Authenticate
+        speech_config = speechsdk.SpeechConfig(subscription_key, service_region)
+        # Set up the file as the audio source
+        audio_config = speechsdk.AudioConfig(filename=audio_file)
+        speech_recognizer = speechsdk.SpeechRecognizer(speech_config, audio_config)
+        audio_file_name_without_extension = audio_file.rsplit('.', 1)[0]
+        transcript_file_name = audio_file_name_without_extension + ".txt"
+        with open(transcript_file_name, 'a') as file:
+                    file.write('\n'+'\n'+'\n')
+                    file.write("Transcription started at " + timestamp + '\n')
+                    file.write('\n'+'\n')
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
     # Flag to end transcription
     done = False
